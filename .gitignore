@@ -20,7 +20,9 @@ client/dist
 # Environment & Secrets (Crucial: Prevents exposing credentials)
 .env
 .env.*
+!.env.example
 server/.env
+!server/.env.example
 client/.env
 *.local
 
