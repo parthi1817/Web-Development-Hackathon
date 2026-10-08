@@ -607,13 +607,17 @@ app.get("/api/dashboard", async (req, res) => {
 });
 
 // ==============================================================================
-// 🚀 SERVER LAUNCH
+// 🚀 SERVER LAUNCH (Runs locally, exports handler for Vercel serverless)
 // ==============================================================================
-app.listen(PORT, () => {
-  console.log(`====================================================`);
-  console.log(`🎓 Student Management System REST API`);
-  console.log(`🌐 Server running at: http://localhost:${PORT}`);
-  console.log(`📊 Health Endpoint:   http://localhost:${PORT}/api/health`);
-  console.log(`🛡️ Resilience Mode:   Active (Zero crash guarantee)`);
-  console.log(`====================================================`);
-});
+if (!process.env.VERCEL) {
+  app.listen(PORT, () => {
+    console.log(`====================================================`);
+    console.log(`🎓 Student Management System REST API`);
+    console.log(`🌐 Server running at: http://localhost:${PORT}`);
+    console.log(`📊 Health Endpoint:   http://localhost:${PORT}/api/health`);
+    console.log(`🛡️ Resilience Mode:   Active (Zero crash guarantee)`);
+    console.log(`====================================================`);
+  });
+}
+
+export default app;
